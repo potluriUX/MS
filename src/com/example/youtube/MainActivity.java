@@ -72,7 +72,7 @@ public class MainActivity extends Activity {
     	// We start a new task that does its work on its own thread
     	// We pass in a handler that will be called when the task has finished
     	// We also pass in the name of the user we are searching YouTube for
-    	new GetYouTubeUserVideosTask(responseHandler, "rajshritelugu").run();
+    	new GetYouTubeUserVideosTask(responseHandler, "shalimarcinema").run();
     }
    
     // This is the handler that receives the response when the YouTube task has finished

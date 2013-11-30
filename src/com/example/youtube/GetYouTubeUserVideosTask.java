@@ -17,6 +17,7 @@ import org.json.JSONObject;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.widget.Toast;
 
 
 
@@ -51,10 +52,22 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			// Get a httpclient to talk to the internet
 			HttpClient client = new DefaultHttpClient();
 			// Perform a GET request to YouTube for a JSON list of all the videos by a specific user
-			int R = (int) ((Math.random() * (490 - 1)) + 1);//int R = (Math.random() * (upper - lower)) + lower;
-			HttpUriRequest request = new HttpGet("https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&max-results=1&start-index="+R);
+			String url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&duration=long";
+			HttpUriRequest request_ti = new HttpGet(url_request);
+			//HttpUriRequest request_ti = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&duration=long");
+			HttpResponse response_ti = client.execute(request_ti);
+			// Convert this response into a readable string
+			String jsonString_ti = StreamUtils.convertToString(response_ti.getEntity().getContent());
+			// Create a JSON object that we can use from the String
+			JSONObject json_ti = new JSONObject(jsonString_ti);
+			Integer totalItems = json_ti.getJSONObject("data").getInt("totalItems");
+			int R = (int) ((Math.random() * (totalItems - 1)) + 1);
+			Log.e("adsf" + R);
+			//HttpUriRequest request = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&max-results=1&duration=long&start-index="+R);
+			HttpUriRequest request = new HttpGet(url_request + "&max-results=1&start-index="+R);
+			
 			//HttpUriRequest request = new HttpGet("https://www.googleapis.com/youtube/v3/search?q="+username+"&part=id&key=AIzaSyAfnzhBO-Nzj119V3gdV4LpWaTRGGSyE0A");
-			Log.e("https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&max-results=1&start-index=55"+R );
+			//Log.e("https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&max-results=1&start-index=55"+R );
 			// Get the response that YouTube sends back
 			HttpResponse response = client.execute(request);
 			// Convert this response into a readable string
@@ -68,13 +81,16 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			// Get are search result items
 			JSONArray jsonArray = json.getJSONObject("data").getJSONArray("items");
 			
+			
+			
+			
 			// Create a list to store are videos in
 			List<Video> videos = new ArrayList<Video>();
 			// Loop round our JSON list of videos creating Video objects to use within our app
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
 				// The title of the video
-				String title = jsonObject.getString("title");
+				String title = jsonObject.getString("title") + "\n\nLikes: " + jsonObject.getString("likeCount")+ "  Views: " + jsonObject.getString("viewCount");
 				String id = jsonObject.getString("id");
 				// The url link back to YouTube, this checks if it has a mobile url
 				// if it doesnt it gets the standard url

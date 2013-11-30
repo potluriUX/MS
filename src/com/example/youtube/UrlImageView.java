@@ -43,7 +43,7 @@ public class UrlImageView extends LinearLayout {
 		mContext = context;
 
 		mImage = new ImageView(mContext);
-		mImage.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT));
+		mImage.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.FILL_PARENT));
 		mImage.setVisibility(View.GONE);
 		
 		mSpinner = new ProgressBar(mContext);

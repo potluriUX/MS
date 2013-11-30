@@ -7,8 +7,8 @@
 
     <com.example.youtube.UrlImageView
         android:id="@+id/userVideoThumbImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="162dp"
+        android:layout_height="140dp"
         android:contentDescription="YouTube video thumbnail"
         android:src="@drawable/ic_launcher" />
 

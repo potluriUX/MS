@@ -2,14 +2,18 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
-
-    <Button
-        android:layout_width="fill_parent"
+    android:orientation="vertical"
+    android:gravity="center" >
+<View
+  android:layout_width="1dp"
+  android:layout_height="30dp">
+</View>
+  
+  <Button
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:onClick="getUserYouTubeFeed"
-        android:text="Random movie" />
-
+        android:text="Shuffle Movie" />
     <com.example.youtube.VideosListView
         android:id="@+id/videosListView"
         android:layout_width="fill_parent"
