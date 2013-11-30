@@ -1,0 +1,51 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# Explicit paths specified without -i nor -o; assuming --only paths...
+#
+# Committer: ravitejapotluri <ravipot@SCHOLAST-0103C7.corp.scholasticinc.local>
+#
+# On branch master
+#
+# Initial commit
+#
+# Changes to be committed:
+#   (use "git rm --cached <file>..." to unstage)
+#
+#	new file:   .gitattributes
+#	new file:   .gitignore
+#	new file:   AndroidManifest.xml
+#	new file:   gen/com/example/youtube/BuildConfig.java
+#	new file:   gen/com/example/youtube/R.java
+#	new file:   ic_launcher-web.png
+#	new file:   libs/YouTubeAndroidPlayerApi.jar
+#	new file:   libs/android-support-v4.jar
+#	new file:   proguard-project.txt
+#	new file:   project.properties
+#	new file:   res/drawable-hdpi/ic_launcher.png
+#	new file:   res/drawable-mdpi/ic_launcher.png
+#	new file:   res/drawable-xhdpi/ic_launcher.png
+#	new file:   res/drawable-xxhdpi/ic_launcher.png
+#	new file:   res/layout/activity_main.xml
+#	new file:   res/layout/activity_main2.xml
+#	new file:   res/layout/list_item_user_video.xml
+#	new file:   res/menu/main.xml
+#	new file:   res/values-sw600dp/dimens.xml
+#	new file:   res/values-sw720dp-land/dimens.xml
+#	new file:   res/values-v11/styles.xml
+#	new file:   res/values-v14/styles.xml
+#	new file:   res/values/dimens.xml
+#	new file:   res/values/strings.xml
+#	new file:   res/values/styles.xml
+#	new file:   src/com/example/youtube/GetYouTubeUserVideosTask.java
+#	new file:   src/com/example/youtube/Library.java
+#	new file:   src/com/example/youtube/Log.java
+#	new file:   src/com/example/youtube/MainActivity.java
+#	new file:   src/com/example/youtube/MainActivity2.java
+#	new file:   src/com/example/youtube/StreamUtils.java
+#	new file:   src/com/example/youtube/UrlImageView.java
+#	new file:   src/com/example/youtube/Video.java
+#	new file:   src/com/example/youtube/VideosAdapter.java
+#	new file:   src/com/example/youtube/VideosListView.java
+#
+
