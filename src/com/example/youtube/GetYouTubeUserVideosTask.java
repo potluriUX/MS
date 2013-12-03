@@ -110,7 +110,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
 				// The title of the video
-				String title = jsonObject.optString("title") + "\n\nLikes: " +jsonObject.optString("likeCount")+ "  Views: " + jsonObject.optString("viewCount");
+				String title = jsonObject.optString("title") + "\n\nLikes: " +jsonObject.optString("likeCount")+ "\nViews: " + jsonObject.optString("viewCount");
 				String id = jsonObject.optString("id");
 				// The url link back to YouTube, this checks if it has a mobile url
 				// if it doesnt it gets the standard url

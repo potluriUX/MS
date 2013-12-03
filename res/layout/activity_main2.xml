@@ -5,7 +5,8 @@
     android:layout_height="fill_parent"   
     android:gravity="bottom"
     android:background="#cd4022"
-    android:padding="16dp"  >
+    android:padding="16dp"
+      >
   
   <Button
         android:layout_width="fill_parent"
@@ -16,11 +17,13 @@
         android:textSize="15sp"
         android:textColor="#444"
         android:textColorHighlight="#999"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="150dp"
+        android:layout_gravity="center_horizontal"   />
   <com.example.youtube.VideosListView
         android:id="@+id/videosListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="270dp" />
+        android:layout_marginTop="270dp"
+        android:background="#efefef"/>
 
 </FrameLayout>
