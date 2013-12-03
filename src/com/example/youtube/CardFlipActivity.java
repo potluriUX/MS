@@ -1,51 +1,61 @@
-package com.example.youtube;
+/*
+ * Copyright 2012 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 
+package com.example.youtube;
 
 import android.app.Activity;
 import android.app.Fragment;
-import android.content.Context;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
+import android.widget.TextView;
 import android.widget.ImageView;
-import android.widget.AdapterView.OnItemClickListener;
-import android.widget.Toast;
-
-
-
-
-
+import android.graphics.drawable.AnimationDrawable;
 /**
- * The Activity can retrieve Videos for a specific username from YouTube</br>
- * It then displays them into a list including the Thumbnail preview and the title</br>
- * There is a reference to each video on YouTube as well but this isn't used in this tutorial</br>
- * </br>
- * <b>Note<b/> orientation change isn't covered in this tutorial, you will want to override
- * onSaveInstanceState() and onRestoreInstanceState() when you come to this
- * </br>
- * @author paul.blundell
+ * Demonstrates a "card-flip" animation using custom fragment transactions ({@link
+ * android.app.FragmentTransaction#setCustomAnimations(int, int)}).
+ *
+ * <p>This sample shows an "info" action bar button that shows the back of a "card", rotating the
+ * front of the card out and the back of the card in. The reverse animation is played when the user
+ * presses the system Back button or the "photo" action bar button.</p>
  */
-public class MainActivity extends Activity {
-    // A reference to our list that will hold the video details
-	private VideosListView listView;
-	private boolean mShowingBack = false;
-	private Handler mHandler = new Handler();
+public class CardFlipActivity extends Activity
+        implements FragmentManager.OnBackStackChangedListener {
+    /**
+     * A handler object, used for deferring UI operations.
+     */
+    private Handler mHandler = new Handler();
 
-	/** Called when the activity is first created. */
+    /**
+     * Whether or not we're showing the back of the card (otherwise showing the front).
+     */
+    private boolean mShowingBack = false;
+
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        final Context context = this;
-        setContentView(R.layout.activity_main2);
-        
+        setContentView(R.layout.activity_card_flip);
+
         if (savedInstanceState == null) {
             // If there is no saved instance state, add a fragment representing the
             // front of the card to this activity. If there is saved instance state,
@@ -61,39 +71,43 @@ public class MainActivity extends Activity {
         // Monitor back stack changes to ensure the action bar shows the appropriate
         // button (either "photo" or "info").
                 
-        //getFragmentManager().addOnBackStackChangedListener(this);
-        
-        listView = (VideosListView) findViewById(R.id.videosListView);
-    	listView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View view,
-					int position, long id) {
-				Video selection = (Video)parent.getItemAtPosition(position)
-						;
-				
-				 
-				Intent intent = new Intent(context, MainActivity2.class);
-				Bundle b = new Bundle();
-				
-				
-				/*String selection = parent.getItemAtPosition(position)
-						.toString();
-				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);
-			
-				
-				WebLinks w = db.getLink(selection);
-*/
-				b.putString("key", selection.getid());
-
-				intent.putExtras(b);
-
-				startActivity(intent);
-			}
-			
-		});
-    	
+        getFragmentManager().addOnBackStackChangedListener(this);
     }
-    
-   
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+
+        // Add either a "photo" or "finish" button to the action bar, depending on which page
+        // is currently selected.
+        MenuItem item = menu.add(Menu.NONE, R.id.action_flip, Menu.NONE,
+                mShowingBack
+                        ? R.string.action_photo
+                        : R.string.action_info);
+        item.setIcon(mShowingBack
+                ? R.drawable.ic_action_photo
+                : R.drawable.ic_action_info);
+        item.setShowAsAction(MenuItem.SHOW_AS_ACTION_IF_ROOM);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                // Navigate "up" the demo structure to the launchpad activity.
+                // See http://developer.android.com/design/patterns/navigation.html for more.
+                NavUtils.navigateUpTo(this, new Intent(this, MainActivity.class));
+                return true;
+
+            case R.id.action_flip:
+                flipCard();
+                return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
     private void flipCard() {
         if (mShowingBack) {
             getFragmentManager().popBackStack();
@@ -146,6 +160,7 @@ public class MainActivity extends Activity {
         });
     }
 
+    @Override
     public void onBackStackChanged() {
         mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
 
@@ -182,34 +197,4 @@ public class MainActivity extends Activity {
             return inflater.inflate(R.layout.fragment_card_back, container, false);
         }
     }
-
-    // This is the XML onClick listener to retreive a users video feed
-    public void getUserYouTubeFeed(View v){
-    	// We start a new task that does its work on its own thread
-    	// We pass in a handler that will be called when the task has finished
-    	// We also pass in the name of the user we are searching YouTube for
-    	flipCard();
-    	new GetYouTubeUserVideosTask(responseHandler, "shalimarcinema").run();
-    }
-   
-    // This is the handler that receives the response when the YouTube task has finished
-	Handler responseHandler = new Handler() {
-		public void handleMessage(Message msg) {
-			populateListWithVideos(msg);
-		};
-	};
-
-	/**
-	 * This method retrieves the Library of videos from the task and passes them to our ListView
-	 * @param msg
-	 */
-	private void populateListWithVideos(Message msg) {
-		// Retreive the videos are task found from the data bundle sent back
-		Library lib = (Library) msg.getData().get(GetYouTubeUserVideosTask.LIBRARY);
-		// Because we have created a custom ListView we don't have to worry about setting the adapter in the activity
-		// we can just call our custom method with the list of items we want to display
-		listView.setVideos(lib.getVideos());
-	}
-	
-	
 }

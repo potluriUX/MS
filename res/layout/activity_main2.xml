@@ -1,22 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/container"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:gravity="center" >
-<View
-  android:layout_width="1dp"
-  android:layout_height="30dp">
-</View>
+    android:layout_height="fill_parent"   
+    android:gravity="bottom"
+    android:background="#cd4022"
+    android:padding="16dp"  >
+
   
   <Button
-        android:layout_width="250dp"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:onClick="getUserYouTubeFeed"
-        android:text="Shuffle Movie" />
+        android:text="Shuffle Movie"
+        android:background="#efefef"          
+        android:textSize="15sp"
+        android:textColor="#444"
+        android:textColorHighlight="#999" />
     <com.example.youtube.VideosListView
         android:id="@+id/videosListView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"   />
 
-</LinearLayout>
+</FrameLayout>
