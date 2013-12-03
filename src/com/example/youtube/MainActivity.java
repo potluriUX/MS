@@ -1,6 +1,11 @@
 package com.example.youtube;
 
 
+
+
+import java.util.Random;
+
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -188,8 +193,18 @@ public class MainActivity extends Activity {
     	// We start a new task that does its work on its own thread
     	// We pass in a handler that will be called when the task has finished
     	// We also pass in the name of the user we are searching YouTube for
+
     	flipCard();
-    	new GetYouTubeUserVideosTask(responseHandler, "shalimarcinema").run();
+    	
+    	String[] users = {"sribalajimovies", "newvolgavideos", "shalimarcinema", "rajshritelugu", "thecinecurrytelugu", "geethaarts",
+    			"idreammovies", "shemarootelugu", "adityacinema", "mangoVideos", "thesantoshvideos"
+    	};
+
+    	String random = (users[new Random().nextInt(users.length)]);
+    	int rnd = new Random().nextInt(users.length);
+        
+    	new GetYouTubeUserVideosTask(responseHandler, users[rnd]).run();
+
     }
    
     // This is the handler that receives the response when the YouTube task has finished

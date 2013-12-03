@@ -52,7 +52,13 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			// Get a httpclient to talk to the internet
 			HttpClient client = new DefaultHttpClient();
 			// Perform a GET request to YouTube for a JSON list of all the videos by a specific user
-			String url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&duration=long";
+			Integer totalItems = 0;
+			String url_request;
+			int R = 0;
+			Boolean cond = false;
+			JSONArray jsonArray;
+		do{
+			url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&duration=long";
 			HttpUriRequest request_ti = new HttpGet(url_request);
 			//HttpUriRequest request_ti = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&duration=long");
 			HttpResponse response_ti = client.execute(request_ti);
@@ -60,9 +66,17 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			String jsonString_ti = StreamUtils.convertToString(response_ti.getEntity().getContent());
 			// Create a JSON object that we can use from the String
 			JSONObject json_ti = new JSONObject(jsonString_ti);
-			Integer totalItems = json_ti.getJSONObject("data").getInt("totalItems");
-			int R = (int) ((Math.random() * (totalItems - 1)) + 1);
-			Log.e("adsf" + R);
+			
+			 totalItems = json_ti.getJSONObject("data").getInt("totalItems");
+			if(totalItems>500){
+				totalItems = 499;
+			}
+			
+			
+			R = (int) ((Math.random() * (totalItems - 1)) + 1);
+			//Log.e( "total"+totalItems + "totals" + url_request + "&max-results=1&start-index="+R);
+			
+			
 			//HttpUriRequest request = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&max-results=1&duration=long&start-index="+R);
 			HttpUriRequest request = new HttpGet(url_request + "&max-results=1&start-index="+R);
 			
@@ -79,19 +93,25 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			// see the documentation on YouTube http://code.google.com/apis/youtube/2.0/developers_guide_jsonc.html
 			
 			// Get are search result items
-			JSONArray jsonArray = json.getJSONObject("data").getJSONArray("items");
+
+			 jsonArray = json.getJSONObject("data").optJSONArray("items");
+			 if(jsonArray == null){
+				 	cond = true;
+			 }
+			 else{
+				 cond= false;
+			 }
+		}while(cond);
 			
-			
-			
-			
+
 			// Create a list to store are videos in
 			List<Video> videos = new ArrayList<Video>();
 			// Loop round our JSON list of videos creating Video objects to use within our app
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
 				// The title of the video
-				String title = jsonObject.getString("title") + "\n\nLikes: " + jsonObject.getString("likeCount")+ "  Views: " + jsonObject.getString("viewCount");
-				String id = jsonObject.getString("id");
+				String title = jsonObject.optString("title") + "\n\nLikes: " +jsonObject.optString("likeCount")+ "  Views: " + jsonObject.optString("viewCount");
+				String id = jsonObject.optString("id");
 				// The url link back to YouTube, this checks if it has a mobile url
 				// if it doesnt it gets the standard url
 				String url;
@@ -108,6 +128,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 				// Create the video object and add it to our list
 				videos.add(new Video(title, url, thumbUrl, id));
 			}
+
 			// Create a library to hold our videos
 			Library lib = new Library(username, videos);
 			// Pack the Library into the bundle to send back to the Activity
@@ -118,7 +139,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			Message msg = Message.obtain();
 			msg.setData(data);//we call the populateListWithVideos here ************ imp
 			replyTo.sendMessage(msg);
-			
+
 		// We don't do any error catching, just nothing will happen if this task falls over
 		// an idea would be to reply to the handler with a different message so your Activity can act accordingly
 		} catch (ClientProtocolException e) {
