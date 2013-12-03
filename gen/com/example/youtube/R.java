@@ -53,11 +53,12 @@ public final class R {
     
          */
         public static final int action_next=0x7f060000;
-        public static final int action_settings=0x7f060008;
+        public static final int action_settings=0x7f060009;
         public static final int container=0x7f060002;
         public static final int imgback=0x7f060005;
-        public static final int userVideoThumbImageView=0x7f060006;
-        public static final int userVideoTitleTextView=0x7f060007;
+        public static final int imgfront=0x7f060006;
+        public static final int userVideoThumbImageView=0x7f060007;
+        public static final int userVideoTitleTextView=0x7f060008;
         public static final int videosListView=0x7f060004;
         public static final int youtube_view=0x7f060003;
     }

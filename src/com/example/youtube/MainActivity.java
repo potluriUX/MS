@@ -8,6 +8,7 @@ import java.util.Random;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -38,7 +39,8 @@ import android.widget.Toast;
  * </br>
  * @author paul.blundell
  */
-public class MainActivity extends Activity {
+public class MainActivity extends Activity 
+	implements FragmentManager.OnBackStackChangedListener {
     // A reference to our list that will hold the video details
 	private VideosListView listView;
 	private boolean mShowingBack = false;
@@ -66,7 +68,7 @@ public class MainActivity extends Activity {
         // Monitor back stack changes to ensure the action bar shows the appropriate
         // button (either "photo" or "info").
                 
-        //getFragmentManager().addOnBackStackChangedListener(this);
+        getFragmentManager().addOnBackStackChangedListener(this);
         
         listView = (VideosListView) findViewById(R.id.videosListView);
     	listView.setOnItemClickListener(new OnItemClickListener() {
@@ -147,6 +149,7 @@ public class MainActivity extends Activity {
                 String variableValue = new StringBuilder("dice").append(rand).toString();
                 ImageView imgview=(ImageView)findViewById(R.id.imgback);
                 imgview.setImageResource(getResources().getIdentifier(variableValue, "drawable", getPackageName()));
+               
             }
         });
     }
