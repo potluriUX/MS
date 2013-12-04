@@ -34,13 +34,16 @@ public final class R {
         public static final int dice4=0x7f020004;
         public static final int dice5=0x7f020005;
         public static final int dice6=0x7f020006;
-        public static final int ic_action_info=0x7f020007;
-        public static final int ic_action_photo=0x7f020008;
-        public static final int ic_launcher=0x7f020009;
-        public static final int image1=0x7f02000a;
-        public static final int image2=0x7f02000b;
-        public static final int thumb1=0x7f02000c;
-        public static final int thumb2=0x7f02000d;
+        public static final int dice7=0x7f020007;
+        public static final int film=0x7f020008;
+        public static final int film1=0x7f020009;
+        public static final int ic_action_info=0x7f02000a;
+        public static final int ic_action_photo=0x7f02000b;
+        public static final int ic_launcher=0x7f02000c;
+        public static final int image1=0x7f02000d;
+        public static final int image2=0x7f02000e;
+        public static final int thumb1=0x7f02000f;
+        public static final int thumb2=0x7f020010;
     }
     public static final class id {
         public static final int action_flip=0x7f060001;

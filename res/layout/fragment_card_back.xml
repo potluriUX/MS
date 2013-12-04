@@ -16,11 +16,11 @@
 
 <ImageView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/imgback"
-    android:layout_width="100dp"
-    android:layout_height="101dp"
-    android:src="@drawable/dice2"
+    android:layout_width="150dp"
+    android:layout_height="150dp"
+    android:src="@drawable/dice7"
     android:scaleType="fitXY"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="5dp"
     android:layout_gravity="center_horizontal"   
     android:contentDescription="@string/description_image_1" />
 

@@ -145,10 +145,10 @@ public class MainActivity extends Activity
             public void run() {
                 invalidateOptionsMenu();
                 //added to randomly change the image
-                int rand = ((int)(Math.random() * 6)) + 1;
+                int rand = ((int)(Math.random() * 8)) + 1;
                 String variableValue = new StringBuilder("dice").append(rand).toString();
                 ImageView imgview=(ImageView)findViewById(R.id.imgback);
-                imgview.setImageResource(getResources().getIdentifier(variableValue, "drawable", getPackageName()));
+                imgview.setImageResource(getResources().getIdentifier("dice7", "drawable", getPackageName()));
                
             }
         });
