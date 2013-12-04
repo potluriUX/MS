@@ -9,16 +9,16 @@
       >
   
   <Button
-        android:layout_width="fill_parent"
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:onClick="getUserYouTubeFeed"
-        android:text="Shuffle Movie"
-        android:background="#efefef"          
+        android:text="Roll"          
         android:textSize="15sp"
         android:textColor="#444"
         android:textColorHighlight="#999"
         android:layout_marginTop="160dp"
-        android:layout_gravity="center_horizontal"   />
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/button"   />
   <com.example.youtube.VideosListView
         android:id="@+id/videosListView"
         android:layout_width="fill_parent"
