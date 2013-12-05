@@ -24,12 +24,12 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		//YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
-	    //youTubeView.initialize(DEVELOPER_KEY, this);
+		YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
+	    youTubeView.initialize(DEVELOPER_KEY, this);
 	  
-		 Intent videoIntent = YouTubeStandalonePlayer.createVideoIntent(MainActivity2.this, DEVELOPER_KEY, VIDEO, 0, true, false);
+		// Intent videoIntent = YouTubeStandalonePlayer.createVideoIntent(MainActivity2.this, DEVELOPER_KEY, VIDEO, 0, true, false);
 
-		    startActivityForResult(videoIntent, 1);
+		  //  startActivityForResult(videoIntent, 1);
 	
 	}
 
