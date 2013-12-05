@@ -16,7 +16,7 @@
         <activity
             android:name="com.google.android.youtube.player.YouTubeStandalonePlayer"
             android:configChanges="keyboardHidden|orientation|screenSize"
-             android:configChanges="orientation|keyboardHidden"
+            
  />
          <activity
             android:name="com.ravi_manasa.kismet.MainActivity2"
