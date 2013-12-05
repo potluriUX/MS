@@ -12,6 +12,7 @@ import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
@@ -24,6 +25,8 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		ActionBar actionBar = getActionBar();
+		actionBar.hide();
 		setContentView(R.layout.activity_main);
 		YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
 	    youTubeView.initialize(DEVELOPER_KEY, this);
