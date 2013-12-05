@@ -14,7 +14,9 @@
  * limitations under the License.
  */
 
-package com.example.youtube;
+package com.ravi_manasa.kismet;
+
+import com.example.youtube.R;
 
 import android.app.Activity;
 import android.app.Fragment;

@@ -18,10 +18,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
  />
          <activity
-            android:name="com.example.youtube.MainActivity2"
+            android:name="com.ravi_manasa.kismet.MainActivity2"
             android:label="@string/app_name" ></activity>
         <activity
-            android:name="com.example.youtube.MainActivity"
+            android:name="com.ravi_manasa.kismet.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -19,7 +19,7 @@
         android:layout_marginTop="160dp"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/button"   />
-  <com.example.youtube.VideosListView
+  <com.ravi_manasa.kismet.VideosListView
         android:id="@+id/videosListView"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
