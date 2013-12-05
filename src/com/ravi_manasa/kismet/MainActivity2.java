@@ -4,7 +4,7 @@ package com.ravi_manasa.kismet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.example.youtube.R;
+import com.ravi_manasa.kismet.R;
 import com.google.android.youtube.player.YouTubeBaseActivity;
 import com.google.android.youtube.player.YouTubeInitializationResult;
 import com.google.android.youtube.player.YouTubePlayer;

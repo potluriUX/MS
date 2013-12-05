@@ -2,7 +2,7 @@ package com.ravi_manasa.kismet;
 
 import java.util.List;
 
-import com.example.youtube.R;
+import com.ravi_manasa.kismet.R;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -5,7 +5,7 @@ package com.ravi_manasa.kismet;
 
 import java.util.Random;
 
-import com.example.youtube.R;
+import com.ravi_manasa.kismet.R;
 
 
 import android.app.Activity;

@@ -16,7 +16,7 @@
 
 package com.ravi_manasa.kismet;
 
-import com.example.youtube.R;
+import com.ravi_manasa.kismet.R;
 
 import android.app.Activity;
 import android.app.Fragment;
