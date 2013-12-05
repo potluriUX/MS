@@ -105,7 +105,8 @@ public class MainActivity extends Activity
    
     private void flipCard() {
         if (mShowingBack) {
-            getFragmentManager().popBackStack();
+        	
+        	getFragmentManager().popBackStack();          
             return;
         }
 
@@ -147,7 +148,7 @@ public class MainActivity extends Activity
             public void run() {
                 invalidateOptionsMenu();
                 //added to randomly change the image
-                int rand = ((int)(Math.random() * 4)) + 1;
+                int rand = ((int)(Math.random() * 9)) + 1;
                 String variableValue = new StringBuilder("dice").append(rand).toString();
                 ImageView imgview=(ImageView)findViewById(R.id.imgback);
                 imgview.setImageResource(getResources().getIdentifier(variableValue, "drawable", getPackageName()));

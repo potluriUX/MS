@@ -18,7 +18,7 @@
     android:id="@+id/imgfront"
     android:layout_width="150dp"
     android:layout_height="150dp"
-    android:src="@drawable/dice7"
+    android:src="@drawable/dice1"
     android:scaleType="fitXY"
     android:layout_marginTop="5dp"
     android:layout_gravity="center_horizontal"  
