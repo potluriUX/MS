@@ -123,7 +123,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 				// A url to the thumbnail image of the video
 				// We will use this later to get an image using a Custom ImageView
 				// Found here http://blog.blundell-apps.com/imageview-with-loading-spinner/
-				String thumbUrl = jsonObject.getJSONObject("thumbnail").getString("sqDefault");
+				String thumbUrl = jsonObject.getJSONObject("thumbnail").getString("hqDefault");
 				
 				// Create the video object and add it to our list
 				videos.add(new Video(title, url, thumbUrl, id));
