@@ -30,7 +30,13 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 		setContentView(R.layout.activity_main);
 		YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
 	    youTubeView.initialize(DEVELOPER_KEY, this);
-	  
+	    
+	    for (int i=0; i < 5; i++)
+	    {
+	    	 Toast.makeText(this, "Hit settings button in bar below beside play to open video in YouTube and then share to Smart tv or Chromecase", 200).show();
+	    }
+	    
+	   
 		// Intent videoIntent = YouTubeStandalonePlayer.createVideoIntent(MainActivity2.this, DEVELOPER_KEY, VIDEO, 0, true, false);
 
 		  //  startActivityForResult(videoIntent, 1);
