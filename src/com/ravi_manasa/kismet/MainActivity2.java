@@ -30,10 +30,14 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 		setContentView(R.layout.activity_main);
 		YouTubePlayerView youTubeView = (YouTubePlayerView) findViewById(R.id.youtube_view);
 	    youTubeView.initialize(DEVELOPER_KEY, this);
-	    
-	    for (int i=0; i < 5; i++)
+	    Bundle b = getIntent().getExtras();
+		String value = b.getString("key");
+	
+		
+	    for (int i=0; i < 3; i++)
 	    {
-	    	 Toast.makeText(this, "Hit settings button in bar below beside play to open video in YouTube and then share to Smart tv or Chromecase", 200).show();
+	    	 Toast.makeText(this, "Hit settings button in player bar to open video in YouTube and " +
+	    	 		"then share to Smart TV or Chromecast" + value, Toast.LENGTH_LONG).show();
 	    }
 	    
 	   
@@ -53,7 +57,7 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 		Bundle b = getIntent().getExtras();
 		String value = b.getString("key");
 	
-
+		
 	   
 	         
 	    

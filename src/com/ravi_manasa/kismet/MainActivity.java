@@ -105,7 +105,32 @@ public class MainActivity extends Activity
 			}
 			
 		});
-    	
+    	relatedListView.setOnItemClickListener(new OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, View view,
+					int position, long id) {
+				Video selection = (Video)parent.getItemAtPosition(position)
+						;
+				
+				 
+				Intent intent = new Intent(context, MainActivity2.class);
+				Bundle b = new Bundle();
+				
+				
+				/*String selection = parent.getItemAtPosition(position)
+						.toString();
+				WebLinks testLink = (WebLinks) parent.getItemAtPosition(position);
+			
+				
+				WebLinks w = db.getLink(selection);
+*/
+				b.putString("key", selection.getid());
+
+				intent.putExtras(b);
+
+				startActivity(intent);
+			}
+			
+		});
     }
     
    
