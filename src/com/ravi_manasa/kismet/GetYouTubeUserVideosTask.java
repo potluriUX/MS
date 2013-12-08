@@ -31,8 +31,10 @@ import android.widget.Toast;
 public class GetYouTubeUserVideosTask implements Runnable {
 	// A reference to retrieve the data when this task finishes
 	public static final String LIBRARY = "Library";
+	public static final String RELATEDLIBRARY = "Library";
 	// A handler that will be notified when the task is finished
 	private final Handler replyTo;
+	private final Handler relatedReplyTo;
 	// The user we are querying on YouTube for videos
 	private final String username;
 
@@ -41,8 +43,9 @@ public class GetYouTubeUserVideosTask implements Runnable {
 	 * @param replyTo - the handler you want to receive the response when this task has finished
 	 * @param username - the username of who on YouTube you are browsing
 	 */
-	public GetYouTubeUserVideosTask(Handler replyTo, String username) {
+	public GetYouTubeUserVideosTask(Handler replyTo, Handler relatedReplyTo, String username) {
 		this.replyTo = replyTo;
+		this.relatedReplyTo = relatedReplyTo;
 		this.username = username;
 	}
 	
@@ -54,9 +57,11 @@ public class GetYouTubeUserVideosTask implements Runnable {
 			// Perform a GET request to YouTube for a JSON list of all the videos by a specific user
 			Integer totalItems = 0;
 			String url_request;
+			String url_request_rel;
 			int R = 0;
 			Boolean cond = false;
 			JSONArray jsonArray;
+			JSONArray jsonArray_rel;
 		do{
 			url_request = "https://gdata.youtube.com/feeds/api/videos?author="+username+"&v=2&alt=jsonc&duration=long";
 			HttpUriRequest request_ti = new HttpGet(url_request);
@@ -106,6 +111,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 
 			// Create a list to store are videos in
 			List<Video> videos = new ArrayList<Video>();
+			List<Video> relatedvideos = new ArrayList<Video>();
 			// Loop round our JSON list of videos creating Video objects to use within our app
 			for (int i = 0; i < jsonArray.length(); i++) {
 				JSONObject jsonObject = jsonArray.getJSONObject(i);
@@ -127,18 +133,59 @@ public class GetYouTubeUserVideosTask implements Runnable {
 				
 				// Create the video object and add it to our list
 				videos.add(new Video(title, url, thumbUrl, id));
+				
+				url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+id+"/related?v=2&max-results=4&alt=jsonc";
+				HttpUriRequest request_rel = new HttpGet(url_request_rel);
+				//HttpUriRequest request_ti = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&duration=long");
+				HttpResponse response_rel = client.execute(request_rel);
+				// Convert this response into a readable string
+				String jsonString_rel = StreamUtils.convertToString(response_rel.getEntity().getContent());
+				// Create a JSON object that we can use from the String
+				JSONObject json_rel = new JSONObject(jsonString_rel);
+				jsonArray_rel = json_rel.getJSONObject("data").optJSONArray("items");
+				
+				for (int j = 0; j < jsonArray_rel.length(); j++) {
+					JSONObject jsonObject_rel = jsonArray_rel.getJSONObject(j);
+					// The title of the video
+					String title_rel = " "+jsonObject_rel.optString("title") + "\n\n Likes: " +jsonObject_rel.optString("likeCount")+ "\n Views: " + jsonObject_rel.optString("viewCount");
+					String id_rel = jsonObject_rel.optString("id");
+					// The url link back to YouTube, this checks if it has a mobile url
+					// if it doesnt it gets the standard url
+					String url_rel;
+					try {
+						url_rel = jsonObject_rel.getJSONObject("player").getString("mobile");
+					} catch (JSONException ignore) {
+						url_rel = jsonObject_rel.getJSONObject("player").getString("default");
+					}
+					// A url to the thumbnail image of the video
+					// We will use this later to get an image using a Custom ImageView
+					// Found here http://blog.blundell-apps.com/imageview-with-loading-spinner/
+					String thumbUrl_rel = jsonObject_rel.getJSONObject("thumbnail").getString("hqDefault");
+					
+					// Create the video object and add it to our list
+					relatedvideos.add(new Video(title_rel, url_rel, thumbUrl_rel, id_rel));
+				}
+				
+				
 			}
 
 			// Create a library to hold our videos
 			Library lib = new Library(username, videos);
+			Library relatedlib = new Library(username, relatedvideos);
 			// Pack the Library into the bundle to send back to the Activity
 			Bundle data = new Bundle();
 			data.putSerializable(LIBRARY, lib);
+			Bundle reldata = new Bundle();
+			reldata.putSerializable(RELATEDLIBRARY, relatedlib);
 			
 			// Send the Bundle of data (our Library) back to the handler (our Activity)
 			Message msg = Message.obtain();
 			msg.setData(data);//we call the populateListWithVideos here ************ imp
 			replyTo.sendMessage(msg);
+			
+			Message relmsg = Message.obtain();
+			relmsg.setData(reldata);//we call the populateListWithVideos here ************ imp
+			relatedReplyTo.sendMessage(relmsg);
 
 		// We don't do any error catching, just nothing will happen if this task falls over
 		// an idea would be to reply to the handler with a different message so your Activity can act accordingly

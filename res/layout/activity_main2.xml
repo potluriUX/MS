@@ -1,29 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/container"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"   
-    android:gravity="bottom"
-    android:background="#cd4022"
-    android:padding="16dp"
-      >
-  
-  <Button
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:onClick="getUserYouTubeFeed"
-        android:text="Roll"          
-        android:textSize="15sp"
-        android:textColor="#444"
-        android:textColorHighlight="#999"
-        android:layout_marginTop="160dp"
-        android:layout_gravity="center_horizontal"
-        android:background="@drawable/button"   />
-  <com.ravi_manasa.kismet.VideosListView
-        android:id="@+id/videosListView"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="fill_parent"
+  android:layout_width="fill_parent" >
+ 	<LinearLayout 
+        android:orientation="vertical"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="270dp"
-        android:background="#efefef"/>
+        android:layout_height="fill_parent">
+		 <FrameLayout 
+		    android:id="@+id/container"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"   
+		    android:gravity="bottom"
+		    android:background="#cd4022"
+		    android:padding="16dp">	  
+		  <Button
+		      android:id="@+id/roll"
+		      android:layout_width="150dp"
+		      android:layout_height="wrap_content"
+		      android:onClick="getUserYouTubeFeed"
+		      android:text="Roll"          
+		      android:textSize="15sp"
+		      android:textColor="#444"
+		      android:textColorHighlight="#999"
+		      android:layout_marginTop="40dp"
+		      android:layout_gravity="right"
+		      android:background="@drawable/button"   />
+		  <TextView android:text="Suggested Movie"
+		      android:id="@+id/suggestedMovie"
+		      android:padding="15dip"
+		      android:textSize="18dip"
+		      android:textColor="#ffffff"
+		      android:layout_marginTop="130dp"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"/>
+		  <com.ravi_manasa.kismet.VideosListView
+		        android:id="@+id/videosListView"
+		        android:layout_width="fill_parent"
+		        android:layout_height="wrap_content"
+		        android:layout_marginTop="170dp"
+		        android:background="#efefef"/>
+		   <TextView 
+		       android:id="@+id/moreMovies"
+		       android:text="More Movies"
+		       android:padding="15dip"
+		       android:textSize="18dip"
+		       android:textColor="#ffffff"
+		       android:layout_marginTop="330dp"
+		       android:layout_width="fill_parent"
+		       android:layout_height="wrap_content"/>		
+			<com.ravi_manasa.kismet.VideosListView
+		        android:id="@+id/relatedVideosListView"
+		        android:layout_width="fill_parent"
+		        android:layout_height="550dp"
+		        android:layout_marginTop="370dp"
+		        android:background="#efefef"/>
+		</FrameLayout>
+	</LinearLayout>
+</ScrollView>
 
-</FrameLayout>

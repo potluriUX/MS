@@ -20,6 +20,6 @@
     android:layout_height="150dp"
     android:src="@drawable/dice1"
     android:scaleType="fitXY"
-    android:layout_marginTop="5dp"
-    android:layout_gravity="center_horizontal"  
+    android:layout_marginTop="0dp"
+    android:layout_gravity="left"  
     android:contentDescription="@string/description_image_1" />

@@ -45,14 +45,19 @@ public final class R {
         public static final int ic_action_photo=0x7f02000f;
         public static final int ic_launcher=0x7f020010;
         public static final int icon1=0x7f020011;
-        public static final int icon2=0x7f020012;
-        public static final int icon3=0x7f020013;
-        public static final int icon4=0x7f020014;
-        public static final int icon5=0x7f020015;
-        public static final int image1=0x7f020016;
-        public static final int image2=0x7f020017;
-        public static final int thumb1=0x7f020018;
-        public static final int thumb2=0x7f020019;
+        public static final int icon10=0x7f020012;
+        public static final int icon2=0x7f020013;
+        public static final int icon3=0x7f020014;
+        public static final int icon4=0x7f020015;
+        public static final int icon5=0x7f020016;
+        public static final int icon6=0x7f020017;
+        public static final int icon7=0x7f020018;
+        public static final int icon8=0x7f020019;
+        public static final int icon9=0x7f02001a;
+        public static final int image1=0x7f02001b;
+        public static final int image2=0x7f02001c;
+        public static final int thumb1=0x7f02001d;
+        public static final int thumb2=0x7f02001e;
     }
     public static final class id {
         public static final int action_flip=0x7f060001;
@@ -65,13 +70,17 @@ public final class R {
     
          */
         public static final int action_next=0x7f060000;
-        public static final int action_settings=0x7f060009;
+        public static final int action_settings=0x7f06000d;
         public static final int container=0x7f060002;
-        public static final int imgback=0x7f060005;
-        public static final int imgfront=0x7f060006;
-        public static final int userVideoThumbImageView=0x7f060007;
-        public static final int userVideoTitleTextView=0x7f060008;
-        public static final int videosListView=0x7f060004;
+        public static final int imgback=0x7f060009;
+        public static final int imgfront=0x7f06000a;
+        public static final int moreMovies=0x7f060007;
+        public static final int relatedVideosListView=0x7f060008;
+        public static final int roll=0x7f060004;
+        public static final int suggestedMovie=0x7f060005;
+        public static final int userVideoThumbImageView=0x7f06000b;
+        public static final int userVideoTitleTextView=0x7f06000c;
+        public static final int videosListView=0x7f060006;
         public static final int youtube_view=0x7f060003;
     }
     public static final class integer {

@@ -23,8 +23,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -45,6 +47,7 @@ public class MainActivity extends Activity
 	implements FragmentManager.OnBackStackChangedListener {
     // A reference to our list that will hold the video details
 	private VideosListView listView;
+	private VideosListView relatedListView;
 	private boolean mShowingBack = false;
 	private Handler mHandler = new Handler();
 
@@ -54,6 +57,8 @@ public class MainActivity extends Activity
         super.onCreate(savedInstanceState);
         final Context context = this;
         setContentView(R.layout.activity_main2);
+        Button bt = (Button)findViewById(R.id.roll);
+        bt.performClick();
         
         if (savedInstanceState == null) {
             // If there is no saved instance state, add a fragment representing the
@@ -73,6 +78,7 @@ public class MainActivity extends Activity
         getFragmentManager().addOnBackStackChangedListener(this);
         
         listView = (VideosListView) findViewById(R.id.videosListView);
+        relatedListView = (VideosListView) findViewById(R.id.relatedVideosListView);
     	listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {
@@ -203,13 +209,13 @@ public class MainActivity extends Activity
     	flipCard();
     	
     	String[] users = {"sribalajimovies", "newvolgavideos", "shalimarcinema", "rajshritelugu", "thecinecurrytelugu", "geethaarts",
-    			"idreammovies", "shemarootelugu", "adityacinema", "mangoVideos", "thesantoshvideos","sureshproductions"
+    			"idreammovies", "shemarootelugu", "adityacinema", "mangoVideos", "thesantoshvideos"
     	};
 
     	String random = (users[new Random().nextInt(users.length)]);
     	int rnd = new Random().nextInt(users.length);
         
-    	new GetYouTubeUserVideosTask(responseHandler, users[rnd]).run();
+    	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd]).run();
 
     }
    
@@ -217,6 +223,11 @@ public class MainActivity extends Activity
 	Handler responseHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			populateListWithVideos(msg);
+		};
+	};
+	Handler responseRelatedHandler = new Handler() {
+		public void handleMessage(Message relmsg) {
+			populateListWithRelatedVideos(relmsg);
 		};
 	};
 
@@ -227,9 +238,21 @@ public class MainActivity extends Activity
 	private void populateListWithVideos(Message msg) {
 		// Retreive the videos are task found from the data bundle sent back
 		Library lib = (Library) msg.getData().get(GetYouTubeUserVideosTask.LIBRARY);
+		
 		// Because we have created a custom ListView we don't have to worry about setting the adapter in the activity
 		// we can just call our custom method with the list of items we want to display
 		listView.setVideos(lib.getVideos());
+		
+	}
+	
+	private void populateListWithRelatedVideos(Message relmsg) {
+		// Retreive the videos are task found from the data bundle sent back
+		Library relatedlib = (Library) relmsg.getData().get(GetYouTubeUserVideosTask.RELATEDLIBRARY);
+		
+		// Because we have created a custom ListView we don't have to worry about setting the adapter in the activity
+		// we can just call our custom method with the list of items we want to display
+		relatedListView.setVideos(relatedlib.getVideos());
+		
 	}
 	
 	
