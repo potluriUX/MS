@@ -6,7 +6,7 @@ import java.util.List;
 /**
  * This is the 'library' of all the users videos
  * 
- * @author paul.blundell
+ * @author ravi_manasa
  */
 public class Library implements Serializable{
 	// The username of the owner of the library

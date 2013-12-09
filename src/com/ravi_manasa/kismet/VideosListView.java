@@ -21,7 +21,7 @@ import android.widget.ListView;
  * One example is we could switch out the adapter we are using, to something that displays scrolling images or whatever,
  * and our activity never need know!</br>
  * 
- * @author paul.blundell
+ * @author ravi_manasa
  */
 public class VideosListView extends ListView {
 

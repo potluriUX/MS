@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * This is a representation of a users video off YouTube
- * @author paul.blundell
+ * @author ravi_manasa
  */
 public class Video implements Serializable {
 	// The title of the video

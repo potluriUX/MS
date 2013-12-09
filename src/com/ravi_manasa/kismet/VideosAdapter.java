@@ -17,7 +17,7 @@ import android.widget.TextView;
  * This adapter is used to show our Video objects in a ListView
  * It hasn't got many memory optimisations, if your list is getting bigger or more complex
  * you may want to look at better using your view resources: http://developer.android.com/resources/samples/ApiDemos/src/com/example/android/apis/view/List14.html
- * @author paul.blundell
+ * @author ravi_manasa
  */
 public class VideosAdapter extends BaseAdapter {
 	// The list of videos to display

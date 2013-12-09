@@ -26,7 +26,7 @@ import android.widget.Toast;
  * This class implements Runnable meaning it will be ran on its own Thread</br>
  * Because it runs on it's own thread we need to pass in an object that is notified when it has finished
  *
- * @author paul.blundell
+ * @author ravi_manasa
  */
 public class GetYouTubeUserVideosTask implements Runnable {
 	// A reference to retrieve the data when this task finishes
@@ -128,7 +128,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 				}
 				// A url to the thumbnail image of the video
 				// We will use this later to get an image using a Custom ImageView
-				// Found here http://blog.blundell-apps.com/imageview-with-loading-spinner/
+				
 				String thumbUrl = jsonObject.getJSONObject("thumbnail").getString("hqDefault");
 				
 				// Create the video object and add it to our list
@@ -159,7 +159,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 					}
 					// A url to the thumbnail image of the video
 					// We will use this later to get an image using a Custom ImageView
-					// Found here http://blog.blundell-apps.com/imageview-with-loading-spinner/
+					
 					String thumbUrl_rel = jsonObject_rel.getJSONObject("thumbnail").getString("hqDefault");
 					
 					// Create the video object and add it to our list

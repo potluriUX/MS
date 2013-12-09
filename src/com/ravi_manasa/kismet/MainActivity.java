@@ -41,7 +41,7 @@ import android.widget.Toast;
  * <b>Note<b/> orientation change isn't covered in this tutorial, you will want to override
  * onSaveInstanceState() and onRestoreInstanceState() when you come to this
  * </br>
- * @author paul.blundell
+ * @author ravi_manasa
  */
 public class MainActivity extends Activity 
 	implements FragmentManager.OnBackStackChangedListener {

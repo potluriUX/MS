@@ -7,7 +7,7 @@ import android.os.Message;
 /**
  * A simple Log wrapper so that we have more control</br>
  * Here we can turn off logging for a live build or do other custom logging things
- * @author paul.blundell
+ * @author ravi_manasa
  */
 public class Log {
 
