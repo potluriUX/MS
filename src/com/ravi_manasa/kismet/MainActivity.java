@@ -231,7 +231,7 @@ public class MainActivity extends Activity
     	// We pass in a handler that will be called when the task has finished
     	// We also pass in the name of the user we are searching YouTube for
 
-    	flipCard();
+    	//flipCard();
     	
     	String[] users = {"sribalajimovies", "newvolgavideos", "shalimarcinema", "rajshritelugu", "thecinecurrytelugu", "geethaarts",
     			"idreammovies", "shemarootelugu", "adityacinema", "mangoVideos", "thesantoshvideos"
