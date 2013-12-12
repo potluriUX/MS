@@ -28,31 +28,31 @@
 		  <TextView android:text="Suggested Movie"
 		      android:id="@+id/suggestedMovie"
 		      android:padding="15dip"
-		      android:textSize="18dip"
+		      android:textSize="12dip"
 		      android:textColor="#ffffff"
-		      android:layout_marginTop="130dp"
+		      android:layout_marginTop="120dp"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"/>
 		  <com.ravi_manasa.kismet.VideosListView
 		        android:id="@+id/videosListView"
 		        android:layout_width="fill_parent"
 		        android:layout_height="wrap_content"
-		        android:layout_marginTop="170dp"
+		        android:layout_marginTop="160dp"
 		        android:background="#efefef"/>
 		   <TextView 
 		       android:id="@+id/moreMovies"
 		       android:text="More Movies"
 		       android:padding="15dip"
-		       android:textSize="18dip"
+		       android:textSize="12dip"
 		       android:textColor="#ffffff"
-		       android:layout_marginTop="330dp"
+		       android:layout_marginTop="320dp"
 		       android:layout_width="fill_parent"
 		       android:layout_height="wrap_content"/>		
 			<com.ravi_manasa.kismet.VideosListView
 		        android:id="@+id/relatedVideosListView"
 		        android:layout_width="fill_parent"
 		        android:layout_height="550dp"
-		        android:layout_marginTop="370dp"
+		        android:layout_marginTop="360dp"
 		        android:background="#efefef"/>
 		</FrameLayout>
 	</LinearLayout>
