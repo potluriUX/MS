@@ -3,31 +3,19 @@ package com.ravi_manasa.kismet;
 
 
 
-import java.util.Random;
-
-import com.ravi_manasa.kismet.R;
-
-
 import android.app.Activity;
 import android.app.Fragment;
-import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.NavUtils;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.AdapterView.OnItemClickListener;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Button;
 
 
 
@@ -44,11 +32,10 @@ import android.widget.Toast;
  * @author ravi_manasa
  */
 public class MainActivity extends Activity 
-	implements FragmentManager.OnBackStackChangedListener {
+	{
     // A reference to our list that will hold the video details
 	private VideosListView listView;
 	private VideosListView relatedListView;
-	private boolean mShowingBack = false;
 	private Handler mHandler = new Handler();
 	private int rnd;
 	/** Called when the activity is first created. */
@@ -60,7 +47,7 @@ public class MainActivity extends Activity
         Button bt = (Button)findViewById(R.id.roll);
         bt.performClick();
         
-        if (savedInstanceState == null) {
+       // if (savedInstanceState == null) {
             // If there is no saved instance state, add a fragment representing the
             // front of the card to this activity. If there is saved instance state,
             // this fragment will have already been added to the activity.
@@ -68,14 +55,14 @@ public class MainActivity extends Activity
                     .beginTransaction()
                     .add(R.id.container, new CardFrontFragment())
                     .commit();
-        } else {
-            mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
-        }
+      //  } else {
+     //       mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
+      //  }
 
         // Monitor back stack changes to ensure the action bar shows the appropriate
         // button (either "photo" or "info").
                 
-        getFragmentManager().addOnBackStackChangedListener(this);
+       
         
         listView = (VideosListView) findViewById(R.id.videosListView);
         relatedListView = (VideosListView) findViewById(R.id.relatedVideosListView);
@@ -134,68 +121,9 @@ public class MainActivity extends Activity
     }
     
    
-    private void flipCard() {
-        if (mShowingBack) {
-        	
-        	getFragmentManager().popBackStack();          
-            return;
-        }
+ 
 
-        // Flip to the back.
-
-        mShowingBack = true;
-
-        // Create and commit a new fragment transaction that adds the fragment for the back of
-        // the card, uses custom animations, and is part of the fragment manager's back stack.
-       
-        getFragmentManager()
-                .beginTransaction()
-
-                // Replace the default fragment animations with animator resources representing
-                // rotations when switching to the back of the card, as well as animator
-                // resources representing rotations when flipping back to the front (e.g. when
-                // the system Back button is pressed).
-                .setCustomAnimations(
-                        R.animator.card_flip_right_in, R.animator.card_flip_right_out,
-                        R.animator.card_flip_left_in, R.animator.card_flip_left_out)
-
-                // Replace any fragments currently in the container view with a fragment
-                // representing the next page (indicated by the just-incremented currentPage
-                // variable).
-                .replace(R.id.container, new CardBackFragment())
-
-                // Add this transaction to the back stack, allowing users to press Back
-                // to get to the front of the card.
-                .addToBackStack(null)
-
-                // Commit the transaction.
-                .commit();
-
-        // Defer an invalidation of the options menu (on modern devices, the action bar). This
-        // can't be done immediately because the transaction may not yet be committed. Commits
-        // are asynchronous in that they are posted to the main thread's message loop.
-        mHandler.post(new Runnable() {
-            @Override
-            public void run() {
-                invalidateOptionsMenu();
-                //added to randomly change the image
-                int rand = ((int)(Math.random() * 9)) + 1;
-                String variableValue = new StringBuilder("dice").append(rand).toString();
-                ImageView imgview=(ImageView)findViewById(R.id.imgback);
-                imgview.setImageResource(getResources().getIdentifier(variableValue, "drawable", getPackageName()));
-               
-            }
-        });
-    }
-
-    public void onBackStackChanged() {
-        mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
-
-        // When the back stack changes, invalidate the options menu (action bar).
-        invalidateOptionsMenu();
-      //  ImageView imgview=(ImageView)findViewById(R.id.imgback);
-      //  imgview.setImageResource(R.drawable.dice3);
-    }
+ 
 
     /**
      * A fragment representing the front of the card.

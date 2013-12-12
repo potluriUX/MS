@@ -1,21 +1,17 @@
 package com.ravi_manasa.kismet;
 
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.ravi_manasa.kismet.R;
-import com.google.android.youtube.player.YouTubeBaseActivity;
-import com.google.android.youtube.player.YouTubeInitializationResult;
-import com.google.android.youtube.player.YouTubePlayer;
-import com.google.android.youtube.player.YouTubePlayerView;
-import com.google.android.youtube.player.YouTubePlayer.Provider;
-import com.google.android.youtube.player.YouTubeStandalonePlayer;
-
 import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
+
+import com.google.android.youtube.player.YouTubeBaseActivity;
+import com.google.android.youtube.player.YouTubeInitializationResult;
+import com.google.android.youtube.player.YouTubePlayer;
+import com.google.android.youtube.player.YouTubePlayer.Provider;
+import com.google.android.youtube.player.YouTubePlayerView;
+import com.google.android.youtube.player.YouTubeStandalonePlayer;
 
 public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
