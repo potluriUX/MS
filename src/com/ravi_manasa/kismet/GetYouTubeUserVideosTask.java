@@ -133,7 +133,7 @@ public class GetYouTubeUserVideosTask implements Runnable {
 				// Create the video object and add it to our list
 				videos.add(new Video(title, url, thumbUrl, id));
 				
-				url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+id+"/related?v=2&max-results=4&alt=jsonc";
+				url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+id+"/related?v=2&max-results=5&alt=jsonc";
 				HttpUriRequest request_rel = new HttpGet(url_request_rel);
 				//HttpUriRequest request_ti = new HttpGet("https://gdata.youtube.com/feeds/api/users/"+username+"/uploads?v=2&alt=jsonc&duration=long");
 				HttpResponse response_rel = client.execute(request_rel);
