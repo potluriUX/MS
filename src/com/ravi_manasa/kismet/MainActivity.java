@@ -50,7 +50,7 @@ public class MainActivity extends Activity
 	private VideosListView relatedListView;
 	private boolean mShowingBack = false;
 	private Handler mHandler = new Handler();
-
+	private int rnd;
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -233,14 +233,24 @@ public class MainActivity extends Activity
 
     	//flipCard();
     	
-    	String[] users = {"sribalajimovies", "newvolgavideos", "shalimarcinema", "rajshritelugu", "thecinecurrytelugu", "geethaarts",
-    			"idreammovies", "shemarootelugu", "adityacinema", "mangoVideos", "thesantoshvideos"
+    	String[] users = {"sribalajimovies", "shalimarcinema", "rajshritelugu", "thesantoshvideos",  
+    			"sribalajimovies", 
+    			"geethaarts","idreammovies", "sribalajimovies", "thesantoshvideos",  
+    			"geethaarts", "shemarootelugu", "adityacinema", "sribalajimovies",  
+    			"mangoVideos", "thesantoshvideos",
+    			 "newvolgavideo",  "geethaarts",  "rajshritelugu", "shalimarcinema", 
+    			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"
     	};
 
-    	String random = (users[new Random().nextInt(users.length)]);
-    	int rnd = new Random().nextInt(users.length);
-        
     	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd]).run();
+        if(rnd > (users.length-2)){
+        	rnd=0;
+        }
+        else{
+        	rnd++;
+        }
+        
+    
 
     }
    
