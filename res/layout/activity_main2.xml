@@ -51,7 +51,7 @@
 			<com.ravi_manasa.kismet.VideosListView2
 		        android:id="@+id/relatedVideosListView"
 		        android:layout_width="fill_parent"
-		        android:layout_height="550dp"
+		        android:layout_height="520dp"
 		        android:layout_marginTop="360dp"
 		        android:background="#efefef"/>
 		</FrameLayout>
