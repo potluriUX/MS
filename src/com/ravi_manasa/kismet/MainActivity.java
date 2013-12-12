@@ -35,7 +35,7 @@ public class MainActivity extends Activity
 	{
     // A reference to our list that will hold the video details
 	private VideosListView listView;
-	private VideosListView relatedListView;
+	private VideosListView2 relatedListView;
 	private Handler mHandler = new Handler();
 	private int rnd;
 	/** Called when the activity is first created. */
@@ -65,7 +65,7 @@ public class MainActivity extends Activity
        
         
         listView = (VideosListView) findViewById(R.id.videosListView);
-        relatedListView = (VideosListView) findViewById(R.id.relatedVideosListView);
+        relatedListView = (VideosListView2) findViewById(R.id.relatedVideosListView);
     	listView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View view,
 					int position, long id) {

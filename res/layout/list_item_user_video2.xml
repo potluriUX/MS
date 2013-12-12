@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal" >
+
+    <com.ravi_manasa.kismet.UrlImageView2
+        android:id="@+id/userVideoThumbImageView2"
+        android:layout_width="120dp"
+        android:layout_height="70dp"
+        android:contentDescription="YouTube video thumbnail"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/userVideoTitleTextView2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Video Title Not Found" />
+
+</LinearLayout>

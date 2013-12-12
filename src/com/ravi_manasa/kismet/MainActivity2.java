@@ -32,8 +32,8 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 		
 	    for (int i=0; i < 3; i++)
 	    {
-	    	 Toast.makeText(this, "Hit settings button in player bar to open video in YouTube and " +
-	    	 		"then share to Smart TV or Chromecast", Toast.LENGTH_LONG).show();
+	    	 Toast.makeText(this, "Hit settings button in player bar to open in YouTube and " +
+	    	 		"then share to Smart TV", Toast.LENGTH_LONG).show();
 	    }
 	    
 	   
