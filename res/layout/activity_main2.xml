@@ -28,7 +28,7 @@
 		  <TextView android:text="Suggested Movie"
 		      android:id="@+id/suggestedMovie"
 		      android:padding="15dip"
-		      android:textSize="12dip"
+		      android:textSize="16dip"
 		      android:textColor="#ffffff"
 		      android:layout_marginTop="120dp"
 		      android:layout_width="fill_parent"
@@ -36,23 +36,23 @@
 		  <com.ravi_manasa.kismet.VideosListView
 		        android:id="@+id/videosListView"
 		        android:layout_width="fill_parent"
-		        android:layout_height="wrap_content"
+		        android:layout_height="142dp"
 		        android:layout_marginTop="160dp"
 		        android:background="#efefef"/>
 		   <TextView 
 		       android:id="@+id/moreMovies"
 		       android:text="More Movies"
 		       android:padding="15dip"
-		       android:textSize="12dip"
+		       android:textSize="16dip"
 		       android:textColor="#ffffff"
-		       android:layout_marginTop="320dp"
+		       android:layout_marginTop="300dp"
 		       android:layout_width="fill_parent"
 		       android:layout_height="wrap_content"/>		
 			<com.ravi_manasa.kismet.VideosListView2
 		        android:id="@+id/relatedVideosListView"
 		        android:layout_width="fill_parent"
-		        android:layout_height="520dp"
-		        android:layout_marginTop="360dp"
+		        android:layout_height="700dp"
+		        android:layout_marginTop="340dp"
 		        android:background="#efefef"/>
 		</FrameLayout>
 	</LinearLayout>
