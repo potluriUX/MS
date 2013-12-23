@@ -1,8 +1,4 @@
 package com.ravi_manasa.kismet;
-
-
-
-
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -16,9 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
-
-
-
 
 
 /**
@@ -45,23 +38,7 @@ public class MainActivity extends Activity
         final Context context = this;
         setContentView(R.layout.activity_main2);
         Button bt = (Button)findViewById(R.id.roll);
-        bt.performClick();
-        
-       // if (savedInstanceState == null) {
-            // If there is no saved instance state, add a fragment representing the
-            // front of the card to this activity. If there is saved instance state,
-            // this fragment will have already been added to the activity.
-            getFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.container, new CardFrontFragment())
-                    .commit();
-      //  } else {
-     //       mShowingBack = (getFragmentManager().getBackStackEntryCount() > 0);
-      //  }
-
-        // Monitor back stack changes to ensure the action bar shows the appropriate
-        // button (either "photo" or "info").
-                
+        bt.performClick();               
        
         
         listView = (VideosListView) findViewById(R.id.videosListView);
@@ -118,48 +95,13 @@ public class MainActivity extends Activity
 			}
 			
 		});
-    }
-    
-   
- 
-
- 
-
-    /**
-     * A fragment representing the front of the card.
-     */
-    public static class CardFrontFragment extends Fragment {
-        public CardFrontFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_card_front, container, false);
-        }
-    }
-
-    /**
-     * A fragment representing the back of the card.
-     */
-    public static class CardBackFragment extends Fragment {
-        public CardBackFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                Bundle savedInstanceState) {
-            return inflater.inflate(R.layout.fragment_card_back, container, false);
-        }
-    }
+    }    
 
     // This is the XML onClick listener to retreive a users video feed
     public void getUserYouTubeFeed(View v){
     	// We start a new task that does its work on its own thread
     	// We pass in a handler that will be called when the task has finished
     	// We also pass in the name of the user we are searching YouTube for
-
-    	//flipCard();
     	
     	String[] users = {"sribalajimovies", "shalimarcinema", "rajshritelugu", "thesantoshvideos",  
     			"sribalajimovies", 
@@ -177,9 +119,6 @@ public class MainActivity extends Activity
         else{
         	rnd++;
         }
-        
-    
-
     }
    
     // This is the handler that receives the response when the YouTube task has finished

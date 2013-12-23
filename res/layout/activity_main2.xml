@@ -12,7 +12,16 @@
 		    android:layout_height="fill_parent"   
 		    android:gravity="bottom"
 		    android:background="#cd4022"
-		    android:padding="16dp">	  
+		    android:padding="16dp">	 
+		  <ImageView 
+		    android:id="@+id/imgback"
+		    android:layout_width="150dp"
+		    android:layout_height="150dp"
+		    android:src="@drawable/dice1"
+		    android:scaleType="fitXY"
+		    android:layout_marginTop="0dp"
+		    android:layout_gravity="left"   
+		    android:contentDescription="@string/description_image_1" />   
 		  <Button
 		      android:id="@+id/roll"
 		      android:layout_width="150dp"
