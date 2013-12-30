@@ -2,6 +2,7 @@ package com.ravi_manasa.kismet;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.http.HttpResponse;
@@ -36,16 +37,18 @@ public class GetYouTubeUserVideosTask implements Runnable {
 	private final Handler relatedReplyTo;
 	// The user we are querying on YouTube for videos
 	private final String username;
+	private HashMap<String, String> hmap ;
 
 	/**
 	 * Don't forget to call run(); to start this task
 	 * @param replyTo - the handler you want to receive the response when this task has finished
 	 * @param username - the username of who on YouTube you are browsing
 	 */
-	public GetYouTubeUserVideosTask(Handler replyTo, Handler relatedReplyTo, String username) {
+	public GetYouTubeUserVideosTask(Handler replyTo, Handler relatedReplyTo, String username, HashMap hmap) {
 		this.replyTo = replyTo;
 		this.relatedReplyTo = relatedReplyTo;
 		this.username = username;
+		this.hmap = hmap;
 	}
 	
 	@Override
@@ -103,7 +106,25 @@ public class GetYouTubeUserVideosTask implements Runnable {
 				 	cond = true;
 			 }
 			 else{
-				 cond= false;
+					
+						JSONObject jsonObject = jsonArray.getJSONObject(0);
+						// The title of the video
+						//String title = " "+jsonObject.optString("title") + "\n\n Likes: " +jsonObject.optString("likeCount")+ "\n Views: " + jsonObject.optString("viewCount");
+						String id = jsonObject.optString("id");
+						
+						Boolean element_exists_cond = hmap.containsKey(id);
+						if(element_exists_cond){
+							
+							
+							cond = true;//video id exists already in the hashmap means video already showed
+						}
+						else{
+							hmap.put(id,  "id"+id);
+						
+							cond = false;//id is new in hashmap. we add it to the hashmap and make condition false so while loop exits!
+						}
+					
+				 
 			 }
 		}while(cond);
 			

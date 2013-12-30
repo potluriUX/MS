@@ -1,4 +1,6 @@
 package com.ravi_manasa.kismet;
+import java.util.HashMap;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -31,6 +33,7 @@ public class MainActivity extends Activity
 	private VideosListView2 relatedListView;
 	private Handler mHandler = new Handler();
 	private int rnd;
+	private HashMap<String, String> hmap = new HashMap<String, String>() ;
 	/** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -112,7 +115,7 @@ public class MainActivity extends Activity
     			 "thecinecurrytelugu", "rajshritelugu", "sribalajimovies", "shalimarcinema"
     	};
 
-    	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd]).run();
+    	new GetYouTubeUserVideosTask(responseHandler, responseRelatedHandler, users[rnd], hmap).run();
         if(rnd > (users.length-2)){
         	rnd=0;
         }
