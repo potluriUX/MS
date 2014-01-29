@@ -23,6 +23,8 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+
+
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -63,19 +65,23 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 			HttpClient client = new DefaultHttpClient();
 			// Perform a GET request to YouTube for a JSON list of all the videos by a specific user
 			String url_request_rel;
-		
-			List<Video> relatedvideos = new ArrayList<Video>();
-			   Map<String,String> sortedMap=sortByComparator(hmap);
+			 Map sortedMap1 = new TreeMap(hmap);
+			   ArrayList<String> keys = new ArrayList<String>(sortedMap1.keySet());
+			   List<Video> relatedvideos = new ArrayList<Video>();
+		        for(int i=keys.size()-1; i>=0;i--){
+		            System.out.println(i+hmap.get(keys.get(i)));
+		        
+			
+			  
 
-		        for (Map.Entry entry : sortedMap.entrySet()) 
-		        {
+		       
 			  
 			   // do something
 			
 			 
 				  
 				 
-				   url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+entry.getValue()+"?v=2&alt=jsonc";
+				   url_request_rel = "https://gdata.youtube.com/feeds/api/videos/"+hmap.get(keys.get(i))+"?v=2&alt=jsonc";
 					HttpUriRequest request_rel = new HttpGet(url_request_rel);
 					HttpResponse response_rel = client.execute(request_rel);
 					// Convert this response into a readable string
@@ -94,7 +100,7 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 						url_rel = data.getJSONObject("player").getString("default");
 					}
 					String thumbUrl_rel = data.getJSONObject("thumbnail").getString("hqDefault");
-					Log.e(id_rel);
+					
 					// Create the video object and add it to our list
 					relatedvideos.add(new Video(title_rel, url_rel, thumbUrl_rel, id_rel));
 				}
@@ -124,7 +130,7 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 			Log.e("Feck", e);
 		}
 	}
-	  private static Map sortByComparator(Map unsortMap)
+	  private static Map<String, String> sortByComparator(Map<String, String> unsortMap)
 	   {
 	        List list=new LinkedList(unsortMap.entrySet());
 	        //sort list based on comparator
