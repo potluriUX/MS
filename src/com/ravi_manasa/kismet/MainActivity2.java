@@ -12,6 +12,8 @@ import com.google.android.youtube.player.YouTubePlayer;
 import com.google.android.youtube.player.YouTubePlayer.Provider;
 import com.google.android.youtube.player.YouTubePlayerView;
 import com.google.android.youtube.player.YouTubeStandalonePlayer;
+import com.ravi_manasa.kismet.DatabaseHandler;
+import com.ravi_manasa.kismet.WebLinks;
 
 public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.OnInitializedListener {
 
@@ -29,7 +31,8 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 	    Bundle b = getIntent().getExtras();
 		String value = b.getString("key");
 	
-		
+		DatabaseHandler db = new DatabaseHandler(this);			
+		db.addLink(new WebLinks(value));  
 	    for (int i=0; i < 3; i++)
 	    {
 	    	 Toast.makeText(this, "Hit settings button in player bar to open in YouTube and " +

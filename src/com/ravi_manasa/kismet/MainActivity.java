@@ -1,6 +1,8 @@
 package com.ravi_manasa.kismet;
 import java.util.HashMap;
 
+
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.content.Context;
@@ -9,6 +11,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -158,6 +163,30 @@ public class MainActivity extends Activity
 		// we can just call our custom method with the list of items we want to display
 		relatedListView.setVideos(relatedlib.getVideos());
 		
+	}
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+	    // Inflate the menu items for use in the action bar
+	    MenuInflater inflater = getMenuInflater();
+	    inflater.inflate(R.menu.main_activity_actions, menu);
+	    return super.onCreateOptionsMenu(menu);
+	}
+	
+	public void openHistory() {			 
+		Intent intent = new Intent(this, HistoryActivity.class);
+	    startActivity(intent);
+	}
+		
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+	    // Handle presses on the action bar items
+	    switch (item.getItemId()) {
+	        case R.id.action_history:
+	            openHistory();
+	            return true;
+	        default:
+	            return super.onOptionsItemSelected(item);
+	    }
 	}
 	
 	
