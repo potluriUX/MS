@@ -130,26 +130,6 @@ public class GetYouTubeHistoryVideosTask implements Runnable {
 			Log.e("Feck", e);
 		}
 	}
-	  private static Map<String, String> sortByComparator(Map<String, String> unsortMap)
-	   {
-	        List list=new LinkedList(unsortMap.entrySet());
-	        //sort list based on comparator
-	        Collections.sort(list,new Comparator()
-	        {
-	             public int compare(Object o1,Object o2)
-	             {
-	     return ((Comparable)((Map.Entry)(o2)).getKey()).compareTo(((Map.Entry) (o1)).getKey());
-	             }
-	        });
-
-	        //put sorted list into map again
-	    Map sortedMap=new LinkedHashMap();
-	    for (Iterator it=list.iterator();it.hasNext();)
-	    {
-	         Map.Entry entry=(Map.Entry)it.next();
-	         sortedMap.put(entry.getKey(),entry.getValue());
-	    }
-	    return sortedMap;
-	   }   
+  
 	
 }
