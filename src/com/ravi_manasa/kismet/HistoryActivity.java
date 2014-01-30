@@ -79,6 +79,7 @@ public class HistoryActivity extends Activity {
 				WebLinks w = db.getLink(selection);*/
 				
 				b.putString("key", selection.getid());
+				b.putBoolean("historyflag", true);
 				intent.putExtras(b);
 				startActivity(intent);
 			}

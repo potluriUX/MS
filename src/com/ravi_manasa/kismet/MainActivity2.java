@@ -30,10 +30,12 @@ public class MainActivity2 extends YouTubeBaseActivity implements YouTubePlayer.
 	    youTubeView.initialize(DEVELOPER_KEY, this);
 	    Bundle b = getIntent().getExtras();
 		String value = b.getString("key");
-	
-		DatabaseHandler db = new DatabaseHandler(this);			
-		db.addLink(new WebLinks(value));  
-	    for (int i=0; i < 3; i++)
+		Boolean flag = b.getBoolean("historyflag");
+		if(flag != true){
+			DatabaseHandler db = new DatabaseHandler(this);			
+			db.addLink(new WebLinks(value));  
+		}
+	    for (int i=0; i < 2; i++)
 	    {
 	    	 Toast.makeText(this, "Hit settings button in player bar to open in YouTube and " +
 	    	 		"then share to Smart TV", Toast.LENGTH_LONG).show();
