@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 
 public class HistoryActivity extends Activity {
@@ -33,25 +34,32 @@ public class HistoryActivity extends Activity {
        
         DatabaseHandler db = new DatabaseHandler(this);
        
-        // Inserting Contacts
+     // Inserting Contacts
         // Log.d("Insert: "); 
-         //db.addLink(new WebLinks("ClbKeWAvm8w"));         
+        // db.addLink(new WebLinks("pSDoWvzsRPY"));         
         // Reading all contacts
         // Log.d("Reading: "); 
-        String id= "1";
-      //  WebLinks Links = db.getLinkByID(id);   
-          
-        List<WebLinks> allLinks = db.getLimLinks();   
-        for (WebLinks cn : allLinks) {
-	        String log = "Id: "+cn.get_id()+" ,VideoId: " + cn.get_videoid();
-	        //Writing Contacts to log
-	        Log.d(log);
-	        String str = String.valueOf(cn.get_videoid());
-	        hmap.put(String.valueOf(cn.get_id()), str);
-        }
-        
-        new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();
-        
+        //String id= "2";
+        // WebLinks Links = db.getLinkByID(id);    
+        //db.deleteLink(id);
+        int i = 0;
+        List<WebLinks> allLinks = db.getLimLinks();        
+        if(!(allLinks.isEmpty())){
+	        for (WebLinks cn : allLinks) {
+		        String log = "Id: "+cn.get_id()+" ,VideoId: " + cn.get_videoid();
+		        //Writing Contacts to log
+		        Log.d(log);
+		        String str = String.valueOf(cn.get_videoid());
+		        hmap.put(String.valueOf(cn.get_id()), str);
+		        i++;
+	        }
+	        //VideosListView2 historyVideosListView = (VideosListView2) findViewById(R.id.historyVideosListView);
+	        historyListView.getLayoutParams().height = i*280;	        
+	        new GetYouTubeHistoryVideosTask(responseRelatedHandler, hmap).run();
+        }else{
+        	TextView noHistory = (TextView) findViewById(R.id.HistoryVideos);
+        	noHistory.setText("No History Avaliable");
+        }        
                 
         // Make sure we're running on Honeycomb or higher to use ActionBar APIs
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
