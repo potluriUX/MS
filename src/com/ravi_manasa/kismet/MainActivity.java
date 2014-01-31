@@ -5,19 +5,16 @@ import java.util.HashMap;
 
 
 import android.app.Activity;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewConfiguration;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Button;
@@ -38,7 +35,6 @@ public class MainActivity extends Activity
     // A reference to our list that will hold the video details
 	private VideosListView listView;
 	private VideosListView2 relatedListView;
-	private Handler mHandler = new Handler();
 	private int rnd;
 	private HashMap<String, String> hmap = new HashMap<String, String>() ;
 	/** Called when the activity is first created. */
@@ -117,7 +113,7 @@ public class MainActivity extends Activity
         }
     }    
 
-    // This is the XML onClick listener to retreive a users video feed
+    // This is the XML onClick listener to retrieve a users video feed
     public void getUserYouTubeFeed(View v){
     	// We start a new task that does its work on its own thread
     	// We pass in a handler that will be called when the task has finished

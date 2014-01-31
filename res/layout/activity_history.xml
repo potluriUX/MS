@@ -1,23 +1,30 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_height="fill_parent"
+  android:layout_width="fill_parent" 
+  android:background="#cd4022">
+  <LinearLayout 
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical"
-    android:layout_gravity="center" 
-    android:gravity="center_horizontal"
-    android:background="#cd4022"
-	android:padding="16dp">
- <TextView android:text="Previously Watched Videos"
-		      android:id="@+id/HistoryVideos"
-		      android:paddingBottom="15dip"
-		      android:paddingTop="15dip"
-		      android:textSize="16sp"
-		      android:textColor="#ffffff"
-		      android:layout_width="fill_parent"
-		      android:layout_height="wrap_content"/>
-<com.ravi_manasa.kismet.VideosListView2	        
-			    android:id="@+id/historyVideosListView"
-		        android:layout_width="fill_parent"
-		        android:layout_height="300dp"
-		        android:background="#efefef"/>    
-</LinearLayout>
+    android:layout_height="wrap_content"    
+    android:orientation="vertical">
+	<FrameLayout 
+		    android:id="@+id/container"
+		    android:layout_width="fill_parent"
+		    android:layout_height="fill_parent"   
+		    android:gravity="bottom"
+		    android:padding="16dp">	
+ 		<TextView android:text="Previously Watched Videos"
+	    	android:id="@+id/HistoryVideos"
+	      	android:layout_marginTop="5dp"
+	      	android:textSize="16sp"
+	      	android:textColor="#ffffff"
+	      	android:layout_width="fill_parent"
+	      	android:layout_height="wrap_content"/>
+		<com.ravi_manasa.kismet.VideosListView2	          
+		    android:id="@+id/historyVideosListView"
+	        android:layout_width="fill_parent"
+	        android:layout_height="300dp"
+	        android:layout_marginTop="40dp"
+	        android:background="#efefef"/>  
+	</FrameLayout>  
+  </LinearLayout>
+</ScrollView>
